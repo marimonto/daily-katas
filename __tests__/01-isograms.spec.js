@@ -1,21 +1,21 @@
-const isIsogram = (str) => {
+function isIsogram(str){
     if (str) {
         const wordArray = str.split('')
-        const test = wordArray.reduce((prev, actual, index) => {
+        const result = wordArray.reduce((prev, actual, index) => {
+          const actualLowerCase = actual.toLowerCase();
             if (index === 1) {
-                return prev.toLowerCase() === actual.toLowerCase() ? false : [prev.toLowerCase(), actual.toLowerCase()]
+                return prev.toLowerCase() === actualLowerCase ? false : [prev.toLowerCase(), actualLowerCase]
             }
             if (!prev) {
                 return false
             }
             if (prev.length) {
-                return prev.includes(actual.toLowerCase()) ? false : [...prev, actual]
+                return prev.includes(actualLowerCase) ? false : [...prev, actual]
             }
         })
-        return test === false ? false : true
+        return result === false ? false : true
     }
     return true
-
 }
 
 describe("isograms", () => {
